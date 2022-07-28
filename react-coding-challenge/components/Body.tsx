@@ -4,6 +4,7 @@ import axios from "axios";
 import Image from "next/image";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ClipLoader } from "react-spinners";
+import PhotoComp from "./Photo";
 
 const Body: React.FC = () => {
   const [data, setPhotosResponse] = useState<any>(null);
@@ -52,12 +53,7 @@ const Body: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
             {data.map((photo: Photo) => (
               <div key={photo.id} className="h-[300px] w-[300px]  relative">
-                <Image
-                  src={photo.urls.small}
-                  alt="image"
-                  layout="fill"
-                  objectFit="contain"
-                />
+                <PhotoComp photo={photo} />
               </div>
             ))}
           </div>
