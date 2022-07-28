@@ -9,12 +9,12 @@ export default async function sendEmail(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  api.search
-    .getPhotos({ query: "cat" })
+  api.photos
+    .getRandom({ count: 10 })
     .then((result) => {
-      //   console.log(result, "result");
+      // console.log(result, "result");
       return res.status(200).json({
-        result,
+        unsplash: result,
       });
     })
     .catch((e) => {

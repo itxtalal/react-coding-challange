@@ -10,20 +10,25 @@ const Body: React.FC = () => {
 
   const fetchMoreData = () => {
     axios.get("/api/unsplash").then((result) => {
-      setPhotosResponse(() => data.concat(result.data.result.response.results));
+      setPhotosResponse(() => data.concat(result.data.unsplash.response));
       console.log(result);
+      console.log(data);
     });
   };
 
   useEffect(() => {
     axios.get("/api/unsplash").then((result) => {
-      setPhotosResponse(result.data.result.response.results);
+      setPhotosResponse(result.data.unsplash.response);
       console.log(result);
     });
   }, []);
 
   if (data === null) {
-    return <ClipLoader />;
+    return (
+      <div className="h-screen my-3 w-full flex items-center justify-center">
+        <ClipLoader />
+      </div>
+    );
   } else if (data.errors) {
     return (
       <div>
@@ -32,7 +37,7 @@ const Body: React.FC = () => {
     );
   } else {
     return (
-      <div className="max-w-[1920px]">
+      <div className="max-w-[1920px] py-2">
         <InfiniteScroll
           dataLength={data.length}
           next={fetchMoreData}
@@ -48,7 +53,7 @@ const Body: React.FC = () => {
             {data.map((photo: Photo) => (
               <div key={photo.id} className="h-[300px] w-[300px]  relative">
                 <Image
-                  src={photo.urls.regular}
+                  src={photo.urls.small}
                   alt="image"
                   layout="fill"
                   objectFit="contain"
