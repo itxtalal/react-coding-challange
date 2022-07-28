@@ -35,7 +35,7 @@ const PhotoComp: React.FC<{ photo: Photo }> = ({ photo }) => {
           />
         </div>
         {/* Image Details */}
-        <div className="flex flex-col sm:flex-row sm:gap-4">
+        <div className="flex flex-col sm:flex-row sm:gap-4 text-black">
           <h5 className="font-medium">Downloads: {photo.downloads}</h5>
           <h5 className="font-medium">Likes: {photo.likes}</h5>
           <h5 className="font-medium">Views: {photo.views}</h5>
