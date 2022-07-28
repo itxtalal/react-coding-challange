@@ -9,7 +9,7 @@ const PhotoComp: React.FC<{ photo: Photo }> = ({ photo }) => {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
   return (
-    <div>
+    <div className="h-[300px] w-[300px]  relative">
       <Image
         src={urls.small}
         alt="image"
@@ -21,18 +21,20 @@ const PhotoComp: React.FC<{ photo: Photo }> = ({ photo }) => {
       />
       <Modal show={showModal} onClose={() => setShowModal(false)}>
         <div className=" relative w-[90%] h-[100%] m-2 mx-auto bg-no-repeat bg-center flex items-center justify-center text-center">
+          {/* While image loads, conditionally render loader */}
           {loading && <ClipLoader />}
+
+          {/* Image is displayed when loaded  */}
           <Image
             src={urls.regular}
             alt="image"
             layout="fill"
-            // width={"100%"}
-            // height={"100%"}
             objectFit="contain"
             onLoadingComplete={() => setLoading(false)}
             className="bg-no-repeat bg-center mx-auto text-center"
           />
         </div>
+        {/* Image Details */}
         <div className="flex flex-col sm:flex-row sm:gap-4">
           <h5 className="font-medium">Downloads: {photo.downloads}</h5>
           <h5 className="font-medium">Likes: {photo.likes}</h5>

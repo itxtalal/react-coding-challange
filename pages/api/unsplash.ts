@@ -1,11 +1,13 @@
 import { createApi } from "unsplash-js";
 import { NextApiRequest, NextApiResponse } from "next";
 
+// get splash access key from env variables
 const api = createApi({
   accessKey: process.env.NEXT_UNSPLASH_ACCESS_KEY!,
 });
 
-export default async function sendEmail(
+// gets random 10 photos from unsplash
+export default async function getRandomPhotos(
   req: NextApiRequest,
   res: NextApiResponse
 ) {

@@ -32,6 +32,7 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          {/* portal for modal */}
           <div id="modal-root"></div>
         </body>
       </Html>

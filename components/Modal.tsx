@@ -8,6 +8,8 @@ type Props = {
 };
 
 const Modal: React.FC<Props> = ({ show, onClose, children }) => {
+  // render the Modal if the window is loaded
+  // isBrowser tells whether the window is loaded or not
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
@@ -16,6 +18,7 @@ const Modal: React.FC<Props> = ({ show, onClose, children }) => {
     }
   }, []);
 
+  // close the Modal
   const handleClose = (e: any) => {
     e.preventDefault();
     onClose();
@@ -38,6 +41,7 @@ const Modal: React.FC<Props> = ({ show, onClose, children }) => {
   );
 
   if (isBrowser) {
+    // render the modal in separate div as best practice
     return ReactDOM.createPortal(
       modalContent,
       document.getElementById("modal-root")!
