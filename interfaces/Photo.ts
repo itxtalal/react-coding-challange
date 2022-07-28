@@ -3,6 +3,8 @@ export type Photo = {
   description: string;
   createdAt: string;
   likes: number;
+  downloads: number;
+  views: number;
   links: {
     download: string;
     html: string;

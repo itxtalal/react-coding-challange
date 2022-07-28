@@ -23,9 +23,14 @@ const Modal: React.FC<Props> = ({ show, onClose, children }) => {
 
   const modalContent = show ? (
     <div className="fixed top-0 left-0 w-[100%] h-[100vh] flex items-center justify-center bg-[rgba(0,0,0,0.7)] overflow-hidden">
-      <div className="bg-white min-w-[500px] min-h-[600px] rounded-md mx-6 z-100 flex flex-col items-center justify-between max-w-[60vw] max-h-[40vh]">
+      <div className="bg-white w-[90%] h-[90%] rounded-md mx-6 z-100 flex flex-col items-center justify-between gap-2 py-2">
         {children}
-        <button onClick={handleClose}>Close Modal</button>
+        <button
+          className="bg-red-600 text-white text-sm rounded-lg px-3 py-1"
+          onClick={handleClose}
+        >
+          Close
+        </button>
       </div>
     </div>
   ) : (
